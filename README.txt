@@ -1,0 +1,63 @@
+Years ago, there was an article in the Circuit Cellar column of Byte
+Magazine that discussed converting text to speech using sound rules.  
+This device was called the MicroVox.  Part 1 (the hardware) was described
+in September 1982, and part 2 (the software) was described in October 1982.
+I had decided to build a synthesizer and write software in Pascal/MT+ 
+ (and some Z80 assembly language) on a CP/M machine.  I had actually built
+the hardware and wrote the software probably in 1984.
+
+I've uploaded this application for historical reasons, and I'd like to share
+this work with the public.  It's not the best parser around (it may be the
+*worst* parser), but this app did the job for me.
+
+I've noticed that the Festival application that I've played with on my
+Linux system produces similar sound quality (maybe better), so this code
+provides no additional information other than to portray *another* way to
+do things.
+
+If anything, people may chuckle with respect to my coding style back in
+1984.
+
+Chris G. 10/31/2020
+
+-------------------------------------------------
+01/05/2023
+-------------------------------------------------
+I have added the original NRL paper for which this work ws derived.  It
+resides in the Papers directory.
+
+
+-------------------------------------------------
+01/07/2023
+-------------------------------------------------
+I have created a Votrax directory that containes the above mentioned
+paper, the Votrax SC-01 datasheet, and photos of my home-built speech box.
+I have to figure out where I put the design notes (schematic and stuff).
+It's somewhere in my lab, I hope. Once I find the design notes, I'll scan
+them and post them in a Design directory.
+
+I think I want to port this Pascal/MT+ code into C or C++ code. I'll have
+to create a Votrax SC-01 software subsystem that accepts a phonem and outputs
+a PCM sample stream representation of the phone to stdout. I can then pipe
+the output to aplay so that I can hear the synthesizer output.
+
+-------------------------------------------------
+01/11/2023
+-------------------------------------------------
+I found the Byte Magazine articles!  The system is called the Microvox Text
+to Speech Synthesizer.  It has a 6502 processor for which its software
+drove the SC-01 chip.  The Byte issues are September 1982 (hardware) and
+October 1982 (software).  My system did not have a processor in it.  It was
+a peripheral box for which the host computer sent information to the system
+via a parallel port interface.  The peripheral board in my computer was a
+3P+S board.
+
+-------------------------------------------------
+01/12/2023
+-------------------------------------------------
+The design is now captured.  The pdf file looks sucky, but the jpegs are not
+too bad. I especially wanted to capture the signal definitions on the DB-2b
+connector.  After perusing the schematic, it is clear that 10 bits of I/O
+are needed: 6 bits for the phonem code, 2 bits for the inflection code,
+1 bit for the strobe, and 1 bit for reading the status of the SC-01 chip.
+
